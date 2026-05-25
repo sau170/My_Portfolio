@@ -1,56 +1,53 @@
+import { useEffect, useRef } from 'react'
+
 const contacts = [
-  {
-    icon: '✉️',
-    label: 'Email',
-    value: 'ganjavevaibhav1@gmail.com',
-    href: 'mailto:ganjavevaibhav1@gmail.com',
-  },
-  {
-    icon: '📱',
-    label: 'Phone',
-    value: '+91 9370283002',
-    href: 'tel:+919370283002',
-  },
-  {
-    icon: '💼',
-    label: 'LinkedIn',
-    value: 'vaibhav--ganjave',
-    href: 'https://www.linkedin.com/in/vaibhav--ganjave',
-  },
-  {
-    icon: '🐙',
-    label: 'GitHub',
-    value: 'Vaibhav-B-Ganjave',
-    href: 'https://github.com/Vaibhav-B-Ganjave',
-  },
+  { icon: '✉️', label: 'Email', value: 'ganjavevaibhav1@gmail.com', href: 'mailto:ganjavevaibhav1@gmail.com' },
+  { icon: '📱', label: 'Phone', value: '+91 9370283002', href: 'tel:+919370283002' },
+  { icon: '💼', label: 'LinkedIn', value: 'vaibhav--ganjave', href: 'https://www.linkedin.com/in/vaibhav--ganjave' },
+  { icon: '🐙', label: 'GitHub', value: 'Vaibhav-B-Ganjave', href: 'https://github.com/Vaibhav-B-Ganjave' },
 ]
 
 export default function Contact() {
-  return (
-    <section id="contact">
-      <div className="container">
-        <div className="section-divider" />
-        <h2 className="section-title">Get In Touch</h2>
-        <p className="section-subtitle">Let's build something great together</p>
+  const ref = useRef()
 
-        <div className="contact-wrapper">
-          <p className="contact-text">
-            I'm currently open to new opportunities. Whether you have a project idea,
-            want to collaborate, or just want to say hi — my inbox is always open!
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ref.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
+  return (
+    <section className="contact" id="contact" ref={ref}>
+      <div className="container">
+        <div className="section-header reveal">
+          <div className="section-tag">// get in touch</div>
+          <h2 className="section-title">Let's Work Together</h2>
+          <div className="section-line" />
+        </div>
+
+        <div className="contact-inner reveal">
+          <p className="contact-desc">
+            I'm currently open to new opportunities and collaborations. Whether you have a project in
+            mind, want to discuss ideas, or just want to say hello — I'd love to hear from you!
           </p>
 
-          <div className="contact-cards">
+          <div className="contact-grid">
             {contacts.map(c => (
               <a
                 key={c.label}
                 href={c.href}
-                className="contact-card"
+                className="contact-item"
                 target={c.href.startsWith('http') ? '_blank' : undefined}
                 rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
               >
-                <div className="contact-card-icon">{c.icon}</div>
-                <h4>{c.label}</h4>
-                <p>{c.value}</p>
+                <div className="contact-icon">{c.icon}</div>
+                <div className="contact-info">
+                  <h4>{c.label}</h4>
+                  <p>{c.value}</p>
+                </div>
               </a>
             ))}
           </div>

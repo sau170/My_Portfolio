@@ -1,81 +1,102 @@
+import { useEffect, useRef } from 'react'
+
 export default function About() {
+  const ref = useRef()
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ref.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   return (
-    <section className="about" id="about">
+    <section className="about" id="about" ref={ref}>
       <div className="container">
-        <div className="section-divider" />
-        <h2 className="section-title">About Me</h2>
-        <p className="section-subtitle">A passionate developer building real-world solutions</p>
+        <div className="section-header reveal">
+          <div className="section-tag">// about me</div>
+          <h2 className="section-title">Who I Am</h2>
+          <div className="section-line" />
+        </div>
 
         <div className="about-grid">
-          <div className="about-text">
+          <div className="about-text reveal">
             <p>
-              I'm a Full Stack Developer based in Pune, India, with over 2 years of hands-on experience
-              building scalable, user-centric web applications. Currently working at Four Colours India Pvt. Ltd.,
-              I specialize in React.js, Node.js, SQL, and MongoDB.
+              I'm a <strong>Full Stack Developer</strong> based in Pune, India, currently working at{' '}
+              <strong>Four Colours India Pvt. Ltd.</strong> I specialize in building scalable,
+              production-ready web applications using modern technologies.
             </p>
             <p>
-              I love solving complex problems through clean, efficient code. From designing REST APIs to
-              crafting smooth UI experiences, I enjoy every part of the development lifecycle — from
-              requirement gathering right through to deployment.
+              With expertise in <strong>React.js, Node.js, SQL, and MongoDB</strong>, I enjoy
+              every phase of the development lifecycle — from gathering requirements and designing
+              architecture, to writing clean code and shipping to production.
             </p>
             <p>
-              I also have experience with the Mendix low-code platform and Java integration, having worked
-              on client solutions that bridge enterprise needs with modern development practices.
+              I also have hands-on experience with the <strong>Mendix low-code platform</strong> and{' '}
+              <strong>Java integration</strong>, having built enterprise client solutions that bridge
+              business needs with modern tech.
             </p>
 
-            <div className="about-info">
-              <div className="info-item">
-                <span className="label">Location</span>
-                <span className="value">Pune, India</span>
-              </div>
-              <div className="info-item">
-                <span className="label">Email</span>
-                <span className="value" style={{ fontSize: '0.82rem' }}>ganjavevaibhav1@gmail.com</span>
-              </div>
-              <div className="info-item">
-                <span className="label">Role</span>
-                <span className="value">Software Developer</span>
-              </div>
-              <div className="info-item">
-                <span className="label">Company</span>
-                <span className="value">Four Colours India</span>
-              </div>
+            <div className="about-details">
+              {[
+                ['Location', 'Pune, India'],
+                ['Role', 'Software Developer'],
+                ['Company', 'Four Colours India'],
+                ['Email', 'ganjavevaibhav1@gmail.com'],
+                ['GitHub', 'Vaibhav-B-Ganjave'],
+                ['Degree', 'B.E. Computer Eng.'],
+              ].map(([label, value]) => (
+                <div className="detail-item" key={label}>
+                  <div className="detail-label">{label}</div>
+                  <div className="detail-value" style={{ fontSize: label === 'Email' ? '0.78rem' : undefined }}>{value}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="about-cards">
-            <div className="about-card">
-              <h3>🏆 Certificates</h3>
-              <div className="cert-item">
-                <span className="cert-icon">☕</span>
-                <div>
+          <div className="about-right reveal">
+            <div className="glass-card">
+              <div className="glass-card-title">🏆 Certificates</div>
+              <div className="cert-row">
+                <div className="cert-badge">☕</div>
+                <div className="cert-info">
                   <h4>Full Stack Java Development Training</h4>
                   <p>QSpiders, Hadapsar Pune</p>
                 </div>
               </div>
-              <div className="cert-item">
-                <span className="cert-icon">⚡</span>
-                <div>
-                  <h4>Mendix: Low-code Application Development</h4>
+              <div className="cert-row">
+                <div className="cert-badge">⚡</div>
+                <div className="cert-info">
+                  <h4>Mendix: Low-code App Development</h4>
                   <p>Udemy</p>
                 </div>
               </div>
             </div>
 
-            <div className="about-card">
-              <h3>🌐 Languages</h3>
-              <div className="lang-item">
-                <span>English</span>
-                <span className="lang-badge">Professional</span>
-              </div>
-              <div className="lang-item">
-                <span>Hindi</span>
-                <span className="lang-badge">Fluent</span>
-              </div>
-              <div className="lang-item">
-                <span>Marathi</span>
-                <span className="lang-badge">Native</span>
-              </div>
+            <div className="glass-card">
+              <div className="glass-card-title">🌐 Languages</div>
+              {[['English', 'Professional'], ['Hindi', 'Fluent'], ['Marathi', 'Native']].map(([lang, level]) => (
+                <div className="lang-row" key={lang}>
+                  <span className="lang-name">{lang}</span>
+                  <span className="lang-pill">{level}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="glass-card">
+              <div className="glass-card-title">🎯 Achievements</div>
+              {[
+                'Delivered 3+ enterprise projects',
+                '2 yrs full-stack React & MongoDB experience',
+                'Low-code client solutions with Mendix + Java',
+              ].map((ach, i) => (
+                <div key={i} style={{ display: 'flex', gap: '10px', padding: '8px 0', borderBottom: i < 2 ? '1px solid var(--border)' : 'none', fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                  <span style={{ color: 'var(--primary)', flexShrink: 0 }}>✦</span>
+                  {ach}
+                </div>
+              ))}
             </div>
           </div>
         </div>
