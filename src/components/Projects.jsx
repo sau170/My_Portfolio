@@ -24,6 +24,18 @@ const projects = [
   },
 ]
 
+const handleTilt = (e) => {
+  const card = e.currentTarget
+  const rect = card.getBoundingClientRect()
+  const x = (e.clientX - rect.left) / rect.width - 0.5
+  const y = (e.clientY - rect.top) / rect.height - 0.5
+  card.style.transform = `perspective(800px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-8px)`
+}
+
+const resetTilt = (e) => {
+  e.currentTarget.style.transform = ''
+}
+
 export default function Projects() {
   const ref = useRef()
   useEffect(() => {
@@ -46,7 +58,7 @@ export default function Projects() {
 
         <div className="proj-grid">
           {projects.map((p, i) => (
-            <div className="proj-card reveal" key={p.title} style={{ transitionDelay: `${i * 100}ms` }}>
+            <div className="proj-card reveal" key={p.title} style={{ transitionDelay: `${i * 100}ms` }} onMouseMove={handleTilt} onMouseLeave={resetTilt}>
               <div className="proj-thumb">
                 <span className="proj-thumb-label">{p.label}</span>
                 <div className="proj-thumb-icon">{p.icon}</div>

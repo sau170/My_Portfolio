@@ -23,6 +23,10 @@ export default function Hero() {
   return (
     <section className="hero" id="home">
       <div className="hero-grid" />
+      <div className="hero-scanlines" />
+      <div className="hero-orb hero-orb-1" />
+      <div className="hero-orb hero-orb-2" />
+      <div className="hero-orb hero-orb-3" />
 
       <div className="container">
         {/* Left */}

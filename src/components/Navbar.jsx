@@ -6,10 +6,13 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 30)
+      const docH = document.documentElement.scrollHeight - window.innerHeight
+      setProgress(docH > 0 ? (window.scrollY / docH) * 100 : 0)
       for (let i = links.length - 1; i >= 0; i--) {
         const el = document.getElementById(links[i].toLowerCase())
         if (el && window.scrollY >= el.offsetTop - 140) {
@@ -26,6 +29,7 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+      <div className="scroll-progress" style={{ width: `${progress}%` }} />
       <div className="container">
         <span className="nav-logo">
           <span className="bracket">&lt;</span>Vaibhav
