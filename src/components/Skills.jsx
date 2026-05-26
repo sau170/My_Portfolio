@@ -1,19 +1,44 @@
 import { useEffect, useRef } from 'react'
 
-const skillGroups = [
-  { icon: '🎨', title: 'Frontend', skills: ['React.js', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Responsive UI', 'REST APIs'] },
-  { icon: '⚙️', title: 'Backend', skills: ['Node.js', 'Express.js', 'REST APIs', 'Java', 'Spring (Basic)', 'Hibernate'] },
-  { icon: '🗄️', title: 'Databases', skills: ['MongoDB', 'SQL', 'MySQL', 'SQL Plus', 'Schema Design'] },
-  { icon: '⚡', title: 'Low-Code / Tools', skills: ['Mendix', 'Java Integration', 'Git', 'VS Code', 'IntelliJ IDEA'] },
-  { icon: '🛠️', title: 'Dev Tools', skills: ['Eclipse', 'Sublime Text', 'MySQL Workbench', 'Postman'] },
+const cats = [
+  {
+    title: 'Frontend',
+    skills: [
+      { ico: '⚛️', name: 'React.js' }, { ico: '🟨', name: 'JavaScript (ES6+)' },
+      { ico: '🌐', name: 'HTML5' }, { ico: '🎨', name: 'CSS3' },
+      { ico: '📱', name: 'Responsive UI' }, { ico: '🔗', name: 'REST APIs' },
+    ],
+  },
+  {
+    title: 'Backend',
+    skills: [
+      { ico: '🟢', name: 'Node.js' }, { ico: '☕', name: 'Java' },
+      { ico: '🍃', name: 'Spring (Basic)' }, { ico: '🗃️', name: 'Hibernate' },
+      { ico: '🔌', name: 'Express.js' },
+    ],
+  },
+  {
+    title: 'Database',
+    skills: [
+      { ico: '🍃', name: 'MongoDB' }, { ico: '🗄️', name: 'SQL / MySQL' },
+      { ico: '🔷', name: 'SQL Plus' }, { ico: '📊', name: 'Schema Design' },
+    ],
+  },
+  {
+    title: 'Tools & Platforms',
+    skills: [
+      { ico: '⚡', name: 'Mendix' }, { ico: '🐙', name: 'Git / GitHub' },
+      { ico: '💻', name: 'VS Code' }, { ico: '🧠', name: 'IntelliJ IDEA' },
+      { ico: '🌑', name: 'Eclipse' }, { ico: '🛠️', name: 'Postman' },
+    ],
+  },
 ]
 
 export default function Skills() {
   const ref = useRef()
-
   useEffect(() => {
     const obs = new IntersectionObserver(
-      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      es => es.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
       { threshold: 0.1 }
     )
     ref.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el))
@@ -21,26 +46,24 @@ export default function Skills() {
   }, [])
 
   return (
-    <section className="skills" id="skills" ref={ref}>
+    <section id="skills" ref={ref}>
       <div className="container">
-        <div className="section-header reveal">
-          <div className="section-tag">// skills & tools</div>
-          <h2 className="section-title">What I Work With</h2>
-          <div className="section-line" />
+        <div className="sec-head reveal">
+          <h2 className="sec-title"><span>Skills</span></h2>
+          <p className="sec-sub">A collection of my technical skills and expertise</p>
+          <div className="sec-line" />
         </div>
 
-        <div className="skills-grid">
-          {skillGroups.map((g, i) => (
-            <div
-              className="skill-card reveal"
-              key={g.title}
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              <div className="skill-icon-box">{g.icon}</div>
-              <h3>{g.title}</h3>
+        <div className="skills-cats">
+          {cats.map((cat, i) => (
+            <div className="skill-cat reveal" key={cat.title} style={{ transitionDelay: `${i * 80}ms` }}>
+              <div className="skill-cat-title">{cat.title}</div>
               <div className="skill-pills">
-                {g.skills.map(s => (
-                  <span className="skill-pill" key={s}>{s}</span>
+                {cat.skills.map(s => (
+                  <span className="sk-pill" key={s.name}>
+                    <span className="sk-ico">{s.ico}</span>
+                    {s.name}
+                  </span>
                 ))}
               </div>
             </div>

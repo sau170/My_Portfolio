@@ -2,46 +2,33 @@ import { useEffect, useRef } from 'react'
 
 const projects = [
   {
-    icon: '🤖',
+    icon: '🤖', label: 'AI / Chatbot',
     title: 'eBuddy — AI Chatbot Platform',
-    desc: 'A ChatGPT-like chatbot interface built for internal company use with a smooth, interactive user experience and scalable frontend architecture.',
+    desc: 'A ChatGPT-like chatbot interface built for internal company use, with smooth interactive UI and a scalable frontend architecture for AI communication tools.',
     tech: ['React.js', 'JavaScript', 'HTML5', 'CSS3'],
-    features: [
-      'Developed a full chatbot UI similar to ChatGPT for internal use',
-      'Implemented interactive UI components for smooth UX',
-      'Built scalable frontend architecture for AI-based tools',
-    ],
+    features: ['ChatGPT-like UI customized for internal use', 'Interactive React UI components', 'Scalable frontend architecture'],
   },
   {
-    icon: '📊',
+    icon: '📊', label: 'Full Stack',
     title: 'Automated Appraisal System',
-    desc: 'End-to-end workflow automation system for employee performance reviews, with full frontend, REST API backend, and database design.',
+    desc: 'End-to-end workflow automation system for employee performance reviews, with REST APIs, SQL/MongoDB data management, and a full React frontend.',
     tech: ['React.js', 'Node.js', 'SQL', 'MongoDB'],
-    features: [
-      'Built complete appraisal workflow automation for performance reviews',
-      'Developed REST APIs for frontend-backend data flow',
-      'Designed and managed database schemas in SQL and MongoDB',
-    ],
+    features: ['Complete appraisal workflow automation', 'REST APIs for frontend-backend data flow', 'Dual database — SQL & MongoDB schemas'],
   },
   {
-    icon: '⚡',
+    icon: '⚡', label: 'Low-Code',
     title: 'Launcher 2',
-    desc: 'Enterprise low-code application built on Mendix with custom Java modules to support complex client-side business requirements.',
+    desc: 'Enterprise low-code application on Mendix with custom Java modules for complex client business requirements, including custom workflow and data model design.',
     tech: ['Mendix', 'Java'],
-    features: [
-      'Developed low-code apps in Mendix for client business needs',
-      'Integrated custom Java modules for enhanced functionality',
-      'Collaborated with clients on workflows, data models, and logic',
-    ],
+    features: ['Low-code Mendix apps for enterprise clients', 'Custom Java module integration', 'Workflow, data model & backend design'],
   },
 ]
 
 export default function Projects() {
   const ref = useRef()
-
   useEffect(() => {
     const obs = new IntersectionObserver(
-      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      es => es.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
       { threshold: 0.1 }
     )
     ref.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el))
@@ -51,30 +38,26 @@ export default function Projects() {
   return (
     <section id="projects" ref={ref}>
       <div className="container">
-        <div className="section-header reveal">
-          <div className="section-tag">// featured projects</div>
-          <h2 className="section-title">Things I've Built</h2>
-          <div className="section-line" />
+        <div className="sec-head reveal">
+          <h2 className="sec-title"><span>Projects</span></h2>
+          <p className="sec-sub">A showcase of the projects I have worked on</p>
+          <div className="sec-line" />
         </div>
 
-        <div className="projects-grid">
+        <div className="proj-grid">
           {projects.map((p, i) => (
-            <div
-              className="project-card reveal"
-              key={p.title}
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              <div className="project-banner" />
-              <div className="project-body">
-                <div className="project-header">
-                  <div className="project-icon-wrap">{p.icon}</div>
-                </div>
+            <div className="proj-card reveal" key={p.title} style={{ transitionDelay: `${i * 100}ms` }}>
+              <div className="proj-thumb">
+                <span className="proj-thumb-label">{p.label}</span>
+                <div className="proj-thumb-icon">{p.icon}</div>
+              </div>
+              <div className="proj-body">
                 <h3>{p.title}</h3>
                 <p>{p.desc}</p>
-                <div className="project-techs">
-                  {p.tech.map(t => <span className="p-tech" key={t}>{t}</span>)}
+                <div className="proj-tags">
+                  {p.tech.map(t => <span className="p-tag" key={t}>{t}</span>)}
                 </div>
-                <ul className="project-features">
+                <ul className="proj-feats">
                   {p.features.map((f, j) => <li key={j}>{f}</li>)}
                 </ul>
               </div>
