@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import profileImg from '../assets/Vaibhav.jpg'
 
 const roles = ['Full Stack Developer', 'React.js Developer', 'Node.js Developer', 'Problem Solver']
 
@@ -77,11 +78,7 @@ export default function Hero() {
           <div className="hero-photo-wrap">
             <div className="hero-photo-border" />
             <div className="hero-photo-inner">
-              <div className="hero-avatar">
-                <div className="avatar-initials">VG</div>
-                <div className="avatar-name">@vganjave</div>
-                <div className="avatar-role">Full Stack Developer<br />Pune, India 🇮🇳</div>
-              </div>
+              <img src={profileImg} alt="Vaibhav Ganjave" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
             </div>
             <div className="hero-badge-wrap">
               <span className="badge-dot" />
