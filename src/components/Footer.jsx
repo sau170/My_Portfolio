@@ -15,7 +15,7 @@ export default function Footer() {
     <>
       <footer className="footer">
         <div className="container">
-          <div className="f-copy">© {new Date().getFullYear()} Vaibhav Ganjave. All rights reserved.</div>
+          <div className="f-copy">© {new Date().getFullYear()} Saurabh Birari. All rights reserved.</div>
         </div>
       </footer>
 

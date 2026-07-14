@@ -12,23 +12,23 @@ const cats = [
   {
     title: 'Backend',
     skills: [
-      { ico: '🟢', name: 'Node.js' }, { ico: '☕', name: 'Java' },
-      { ico: '🍃', name: 'Spring (Basic)' }, { ico: '🗃️', name: 'Hibernate' },
-      { ico: '🔌', name: 'Express.js' },
+      { ico: '🟢', name: 'Node.js' }, { ico: '☕', name: 'Core Java' },
+      { ico: '🍃', name: '' }, { ico: '🗃️', name: '' },
+      { ico: '🔌', name: 'Basic Express.js' },
     ],
   },
   {
     title: 'Database',
     skills: [
       { ico: '🍃', name: 'MongoDB' }, { ico: '🗄️', name: 'SQL / MySQL' },
-      { ico: '🔷', name: 'SQL Plus' }, { ico: '📊', name: 'Schema Design' },
+      { ico: '🔷', name: '' }, { ico: '📊', name: '' },
     ],
   },
   {
     title: 'Tools & Platforms',
     skills: [
-      { ico: '⚡', name: 'Mendix' }, { ico: '🐙', name: 'Git / GitHub' },
-      { ico: '💻', name: 'VS Code' }, { ico: '🧠', name: 'IntelliJ IDEA' },
+      { ico: '⚡', name: 'VS Code' }, { ico: '🐙', name: 'Git / GitHub' },
+      { ico: '💻', name: 'Bootstrap' }, { ico: '🧠', name: 'Rect Router' },
       { ico: '🌑', name: 'Eclipse' }, { ico: '🛠️', name: 'Postman' },
     ],
   },

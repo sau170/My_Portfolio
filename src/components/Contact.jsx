@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 
 const contacts = [
-  { icon: '✉️', label: 'Email', value: 'ganjavevaibhav1@gmail.com', href: 'mailto:ganjavevaibhav1@gmail.com' },
-  { icon: '📱', label: 'Phone', value: '+91 9370283002', href: 'tel:+919370283002' },
-  { icon: '💼', label: 'LinkedIn', value: 'vaibhav--ganjave', href: 'https://www.linkedin.com/in/vaibhav--ganjave' },
-  { icon: '🐙', label: 'GitHub', value: 'Vaibhav-B-Ganjave', href: 'https://github.com/Vaibhav-B-Ganjave' },
+  { icon: '✉️', label: 'Email', value: 'saurabhbirari9999@gmail.com', href: 'mailto:saurabhbirari9999@gmail.com' },
+  { icon: '📱', label: 'Phone', value: '+91 937029450', href: 'tel:+91937029450' },
+  { icon: '💼', label: 'LinkedIn', value: 'saurabh--Birari', href: 'https://www.linkedin.com/in/saurabh-birari-388643235?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
+  { icon: '🐙', label: 'GitHub', value: 'Saurabh-S-Birari', href: '' },
 ]
 
 export default function Contact() {

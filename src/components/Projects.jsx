@@ -15,13 +15,13 @@ const projects = [
     tech: ['React.js', 'Node.js', 'SQL', 'MongoDB'],
     features: ['Complete appraisal workflow automation', 'REST APIs for frontend-backend data flow', 'Dual database — SQL & MongoDB schemas'],
   },
-  {
+ /* {
     icon: '⚡', label: 'Low-Code',
     title: 'Launcher 2',
     desc: 'Enterprise low-code application on Mendix with custom Java modules for complex client business requirements, including custom workflow and data model design.',
     tech: ['Mendix', 'Java'],
     features: ['Low-code Mendix apps for enterprise clients', 'Custom Java module integration', 'Workflow, data model & backend design'],
-  },
+  },*/
 ]
 
 const handleTilt = (e) => {

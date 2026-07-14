@@ -26,16 +26,15 @@ export default function Experience() {
             <div className="exp-body">
               <div className="exp-top">
                 <div>
-                  <div className="exp-role">Software Developer</div>
+                  <div className="exp-role">Front-End Developer</div>
                   <div className="exp-co">Four Colours India Pvt. Ltd. · Pune, India</div>
                 </div>
                 <span className="exp-period">Sep 2023 – Present</span>
               </div>
               <ul className="exp-list">
-                <li>2 years of hands-on <strong>full-stack development</strong> with React.js, SQL, MongoDB, and Mendix.</li>
+                <li>2 years of hands-on <strong>front-End development</strong> with React.js, HTML,CSS,JavaScript,MongoDB.</li>
                 <li>Designed and developed <strong>responsive UIs</strong> and integrated <strong>REST APIs</strong> for multiple enterprise applications.</li>
                 <li>Collaborated with cross-functional teams to deliver <strong>scalable and maintainable solutions</strong> on schedule.</li>
-                <li>Gained deep experience in <strong>Mendix low-code platform</strong> with <strong>Java integration</strong> for client-side applications.</li>
                 <li>Involved in the <strong>end-to-end development lifecycle</strong> — requirement gathering, design, coding, testing, and deployment.</li>
               </ul>
             </div>
